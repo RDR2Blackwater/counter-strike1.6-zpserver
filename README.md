@@ -37,7 +37,7 @@ services:
         image: handsomejeck/counter-strike1.6-zpserver:latest
 ```
 
-**About Server Cpnfigurations**
+**About Server Configurations**
 
 This server has added PodBot(Well, working badly in Counter-Strike1.6...) and would swap 20 Bots on server started. Bots can be modified in `/hlds/addons/podbot/podbot.cfg`.
 Besides ZPA, some plugins like CSO Weapons were added as extra items, players could buy them via ZP buy menu.To disable plugins, add ";" before plugin lines in 
@@ -47,3 +47,7 @@ To make any weapons affordable for every players, configuration file has been re
 `/hlds/cstrike/addons/amxmodx/configs/zombie_plague_advance.cfg`
 
 Server is using Build 8684, ReHLDS & reunion are required to support Protocol 47, if you do not want non-steam players to join, add ";" before `linux addons/reunion/reunion_mm_i386.so` in `/hlds/cstrike/addons/metamod/plugins.ini` to disable reunion.
+
+**Dockerfile**
+
+Most of Dockerfile about counter-strike1.6 server cannot work now due to improper configurations about SteamCMD, so I write a [Dockerfile][Dockerfile] as example.
