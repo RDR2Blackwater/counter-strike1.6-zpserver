@@ -46,7 +46,7 @@ Besides ZPA, some plugins like CSO Weapons were added as extra items, players co
 To make any weapons affordable for every players, configuration file has been rewritten, you can customize the properties about ZPA in  
 `/hlds/cstrike/addons/amxmodx/configs/zombie_plague_advance.cfg`
 
-Server is using Build 8684, ReHLDS & reunion are required to support Protocol 47, if you do not want non-steam players to join, add ";" before `linux addons/reunion/reunion_mm_i386.so` in `/hlds/cstrike/addons/metamod/plugins.ini` to disable reunion.
+Server is using Build 8684, dproto will not work, so ReHLDS & reunion are required to support Protocol 47, if you do not want non-steam players to join, add ";" before `linux addons/reunion/reunion_mm_i386.so` in `/hlds/cstrike/addons/metamod/plugins.ini` to disable reunion.
 
 **Dockerfile**
 
