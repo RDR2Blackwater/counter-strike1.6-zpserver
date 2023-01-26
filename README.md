@@ -13,7 +13,7 @@ You may deploy this server easily by pulling the image down and run it like:
 
     docker run --name cs16-server -p 27015:27015/udp -p 27015:27015 -p 8803:80 handsomejeck/counter-strike1.6-zpserver:latest
 
-*Note:I rewrote the fast download port as `8803`, you can change this port and modify the path in /hlds/cstrike/server.cfg after executing the contain*
+*Note:I rewrote the fast download port as `8803`, you can change this port and modify the path in `/hlds/cstrike/server.cfg` after executing the contain*
 
 But it is recommended to disable core dumps by using --ulimit core=0 before running.If not, every core dumps would be recorded in docker commit.
 
