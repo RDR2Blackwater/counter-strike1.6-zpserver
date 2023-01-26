@@ -50,4 +50,4 @@ Server is using Build 8684, ReHLDS & reunion are required to support Protocol 47
 
 **Dockerfile**
 
-Most of Dockerfile about counter-strike1.6 server cannot work now due to improper configurations about SteamCMD, so I write a [Dockerfile][Dockerfile] as example.
+Most of Dockerfile about counter-strike1.6 server cannot work now due to improper configurations about SteamCMD, so I write a [Dockerfile](./Dockerfile) as example.
