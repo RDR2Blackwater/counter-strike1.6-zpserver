@@ -6,7 +6,7 @@ ENV MAP=de_dust2
 ENV MAXPLAYERS=32
 ENV SV_LAN=0
 
-# install dependencies & add user
+# install dependencies & add user for non-root installation of SteamCMD
 RUN dpkg --add-architecture i386 \
     && apt-get update \
     && apt-get -qqy --force-yes install lib32gcc1 libsdl2-2.0-0:i386 curl nginx nano \
@@ -21,14 +21,19 @@ RUN dpkg --add-architecture i386 \
 USER steamTemp
 
 # create directories, download steamcmd and copy zp server files to the directory
+# DO NOT LOGIN AS "anonymous", THIS WILL CAUSE UNEXPECTABLE PAUSE WHILE INSTALLING
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar -zxf - -C /SteamCMD/Steam \
-    && /SteamCMD/Steam/steamcmd.sh +force_install_dir /hlds/ +login 1047495999 av13141314 2P4K9 +app_set_config 90 mod cstrike +app_update 90 validate +quit || true \
+    && /SteamCMD/Steam/steamcmd.sh +force_install_dir /hlds/ +login user password Guard_Code +app_set_config 90 mod cstrike +app_update 90 validate +quit || true \
     && rm -r /hlds/steamapps/* \
-    && curl -s https://raw.githubusercontent.com/dgibbs64/HLDS-appmanifest/master/CounterStrike/appmanifest_90.acf -o /hlds/steamapps/appmanifest_90.acf \
-    && /SteamCMD/Steam/steamcmd.sh +force_install_dir /hlds/ +login 1047495999 av13141314 2P4K9 +app_update 90 validate +quit
+#   if second installation failed, remove "#" in front of the next line
+#   && curl -s https://raw.githubusercontent.com/dgibbs64/HLDS-appmanifest/master/CounterStrike/appmanifest_90.acf -o /hlds/steamapps/appmanifest_90.acf \
+    && /SteamCMD/Steam/steamcmd.sh +force_install_dir /hlds/ +login user password Guard_Code +app_update 90 validate +quit
 
 USER root
 RUN rm -r /SteamCMD
+
+#directory hlds contains my plugins, bots, configs, etc.
+#this step can be replaced by the installation of any other plugins 
 COPY hlds /hlds/
 
 # configure nginx to allow for FastDownload
